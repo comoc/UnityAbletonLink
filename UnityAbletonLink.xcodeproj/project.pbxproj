@@ -6,9 +6,18 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		FD28C6A71E004F5A00734748 /* Plugin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD28C6A51E004F5A00734748 /* Plugin.cpp */; };
+		FD742A271E0E89FF00CDEBC9 /* MyAbletonLink.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD742A261E0E89FF00CDEBC9 /* MyAbletonLink.cpp */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		FD28C69A1E004E9D00734748 /* UnityAbletonLink.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnityAbletonLink.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD28C69D1E004E9D00734748 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FD28C6A41E004F3900734748 /* Plugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Plugin.h; sourceTree = "<group>"; };
+		FD28C6A51E004F5A00734748 /* Plugin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Plugin.cpp; sourceTree = "<group>"; };
+		FD742A251E0E893900CDEBC9 /* MyAbletonLink.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyAbletonLink.h; sourceTree = "<group>"; };
+		FD742A261E0E89FF00CDEBC9 /* MyAbletonLink.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MyAbletonLink.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -25,6 +34,7 @@
 		FD28C6911E004E9D00734748 = {
 			isa = PBXGroup;
 			children = (
+				FD28C6A31E004EDA00734748 /* Source */,
 				FD28C69C1E004E9D00734748 /* UnityAbletonLink */,
 				FD28C69B1E004E9D00734748 /* Products */,
 			);
@@ -44,6 +54,17 @@
 				FD28C69D1E004E9D00734748 /* Info.plist */,
 			);
 			path = UnityAbletonLink;
+			sourceTree = "<group>";
+		};
+		FD28C6A31E004EDA00734748 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				FD742A261E0E89FF00CDEBC9 /* MyAbletonLink.cpp */,
+				FD28C6A41E004F3900734748 /* Plugin.h */,
+				FD28C6A51E004F5A00734748 /* Plugin.cpp */,
+				FD742A251E0E893900CDEBC9 /* MyAbletonLink.h */,
+			);
+			name = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -72,7 +93,7 @@
 		FD28C6921E004E9D00734748 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Akihiro Komori";
 				TargetAttributes = {
 					FD28C6991E004E9D00734748 = {
@@ -113,6 +134,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD28C6A71E004F5A00734748 /* Plugin.cpp in Sources */,
+				FD742A271E0E89FF00CDEBC9 /* MyAbletonLink.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,6 +160,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -159,6 +183,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					link/include,
+					link/include/ableton,
+					"link/modules/asio-standalone/asio/include",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -184,6 +213,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -200,6 +230,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					link/include,
+					link/include/ableton,
+					"link/modules/asio-standalone/asio/include",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
@@ -251,6 +286,7 @@
 				FD28C6A21E004E9D00734748 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
