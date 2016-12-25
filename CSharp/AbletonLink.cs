@@ -4,15 +4,23 @@ using System.Runtime.InteropServices;
 
 public class AbletonLink: IDisposable
 {
-	private static AbletonLink singletonInstance;
-	private IntPtr instance = IntPtr.Zero;
+	private static object lockOjbect = new object();
+	private static volatile AbletonLink singletonInstance;
+	private IntPtr nativeInstance = IntPtr.Zero;
+	private const double INITIAL_TEMPO = 120.0;
 
 	public static AbletonLink Instance
 	{
 		get
 		{
 			if (singletonInstance == null)
-				singletonInstance = new AbletonLink();
+			{
+				lock (lockOjbect)
+				{
+					singletonInstance = new AbletonLink();
+					singletonInstance.setup(INITIAL_TEMPO);
+				}
+			}
 			return singletonInstance;
 		}
 	}
@@ -25,7 +33,7 @@ public class AbletonLink: IDisposable
 	private static extern IntPtr CreateAbletonLink();
 	private AbletonLink()
 	{
-		instance = CreateAbletonLink();
+		nativeInstance = CreateAbletonLink();
 	}
 
 	~AbletonLink()
@@ -41,9 +49,9 @@ public class AbletonLink: IDisposable
 	private static extern void DestroyAbletonLink(IntPtr ptr);
 	public void Dispose()
 	{
-		if (instance != IntPtr.Zero) {
-			DestroyAbletonLink(instance);
-			instance = IntPtr.Zero;
+		if (nativeInstance != IntPtr.Zero) {
+			DestroyAbletonLink(nativeInstance);
+			nativeInstance = IntPtr.Zero;
 		}
 	}
 
@@ -53,9 +61,9 @@ public class AbletonLink: IDisposable
 	[DllImport ("UnityAbletonLink")]
 	#endif
 	private static extern void setup(IntPtr ptr, double bpm);
-	public void setup(double bpm)
+	private void setup(double bpm)
 	{
-		setup(instance, bpm);
+		setup(nativeInstance, bpm);
 	}
 
 	#if UNITY_IPHONE
@@ -66,7 +74,7 @@ public class AbletonLink: IDisposable
 	private static extern void setTempo(IntPtr ptr, double bpm);
 	public void setTempo(double bpm)
 	{
-		setTempo(instance, bpm);
+		setTempo(nativeInstance, bpm);
 	}
 
 	#if UNITY_IPHONE
@@ -77,7 +85,7 @@ public class AbletonLink: IDisposable
 	private static extern double tempo(IntPtr ptr);
 	public double tempo()
 	{
-		return tempo(instance);
+		return tempo(nativeInstance);
 	}
 
 	#if UNITY_IPHONE
@@ -88,7 +96,7 @@ public class AbletonLink: IDisposable
 	private static extern void setQuantum(IntPtr ptr, double quantum);
 	public void setQuantum(double quantum)
 	{
-		setQuantum(instance, quantum);
+		setQuantum(nativeInstance, quantum);
 	}
 
 	#if UNITY_IPHONE
@@ -99,7 +107,7 @@ public class AbletonLink: IDisposable
 	private static extern double quantum(IntPtr ptr);
 	public double quantum()
 	{
-		return quantum(instance);
+		return quantum(nativeInstance);
 	}
 
 	#if UNITY_IPHONE
@@ -110,7 +118,7 @@ public class AbletonLink: IDisposable
 	private static extern bool isEnabled(IntPtr ptr);
 	public bool isEnabled()
 	{
-		return isEnabled(instance);
+		return isEnabled(nativeInstance);
 	}
 
 	#if UNITY_IPHONE
@@ -121,7 +129,7 @@ public class AbletonLink: IDisposable
 	private static extern void enable(IntPtr ptr, bool bEnable);
 	public void enable(bool bEnable)
 	{
-		enable(instance, bEnable);
+		enable(nativeInstance, bEnable);
 	}
 
 	#if UNITY_IPHONE
@@ -132,7 +140,7 @@ public class AbletonLink: IDisposable
 	private static extern int numPeers(IntPtr ptr);
 	public int numPeers()
 	{
-		return numPeers(instance);
+		return numPeers(nativeInstance);
 	}
 
 	#if UNITY_IPHONE
@@ -143,6 +151,6 @@ public class AbletonLink: IDisposable
 	private static extern void update(IntPtr ptr, out double beat, out double phase);
 	public void update(out double beat, out double phase)
 	{
-		update(instance, out beat, out phase);
+		update(nativeInstance, out beat, out phase);
 	}
 }

@@ -35,8 +35,6 @@ public class Example : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		AbletonLink.Instance.setup (120); // 120bpm
-		AbletonLink.Instance.setQuantum (4); // quadruple time
 	}
 
 	// Update is called once per frame
