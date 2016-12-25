@@ -8,7 +8,8 @@ After checked out the UnityAbletonLink repository, then check out all dependenci
 
 ```
 cd UnityAbletonLink
-git submodule update --init --recursive```
+git submodule update --init --recursive
+```
 
 Open `UnityAbletonLink.xcodeproj` with Xcode, then build it.
 
@@ -42,4 +43,5 @@ public class Example : MonoBehaviour {
     // We can obtain the latest beat and phase like this.
 		Debug.Log ("beat: " + beat + " phase:" + phase);
 	}
-}```
+}
+```
