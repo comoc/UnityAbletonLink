@@ -20,7 +20,9 @@ Create a project in Unity and create a `plugin` folder in it.
 Copy `UnityAbletonLink.bundle` and `CSharp/AbletonLink.cs` into the `plugin` folder.
 
 Where `AbletonLink.cs` is a wrapper script for `UnityAbletonLink` plugin.
+
 Write some script to use it.
+For example,
 
 ```Example.cs
 using System.Collections;
