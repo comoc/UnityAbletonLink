@@ -46,3 +46,13 @@ public class Example : MonoBehaviour {
 	}
 }
 ```
+
+Attach the script to a GameObject (e.g. Main Camera or something).
+Play the scene and you can see log messages like the following.
+```
+beat: 43.151854 phase:3.151854
+UnityEngine.Debug:Log(Object)
+beat: 43.265132 phase:3.265132
+UnityEngine.Debug:Log(Object)
+...
+```
