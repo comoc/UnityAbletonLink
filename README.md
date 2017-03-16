@@ -17,7 +17,7 @@ Open `UnityAbletonLink.xcodeproj` with Xcode, then build it.
 
 Create a project in Unity and create a `plugin` folder in it.
 
-Copy `UnityAbletonLink.bundle` and `CSharp/AbletonLink.cs` into the `plugin` folder.
+Copy `UnityAbletonLink.bundle` and `CSharp/AbletonLink.cs` into the `Plugins` folder.
 
 Where `AbletonLink.cs` is a wrapper script for `UnityAbletonLink` plugin.
 
