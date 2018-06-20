@@ -19,71 +19,84 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-    void* UNITY_INTERFACE_EXPORT CreateAbletonLink()
+    UNITY_INTERFACE_EXPORT void* UNITY_INTERFACE_API CreateAbletonLink()
     {
         return new MyAbletonLink();
     }
-    void UNITY_INTERFACE_EXPORT DestroyAbletonLink(void* ptr)
+    UNITY_INTERFACE_EXPORT void UNITY_INTERFACE_API DestroyAbletonLink(void* ptr)
     {
         MyAbletonLink* link = static_cast<MyAbletonLink*>(ptr);
         delete link;
     }
     
-    void UNITY_INTERFACE_EXPORT setup(void* ptr, double bpm)
+    UNITY_INTERFACE_EXPORT void UNITY_INTERFACE_API setup(void* ptr, double bpm)
     {
         MyAbletonLink* link = static_cast<MyAbletonLink*>(ptr);
         link->setup(bpm);
     }
     
-    void UNITY_INTERFACE_EXPORT setTempo(void* ptr, double bpm)
+    UNITY_INTERFACE_EXPORT void UNITY_INTERFACE_API setTempo(void* ptr, double bpm)
     {
         MyAbletonLink* link = static_cast<MyAbletonLink*>(ptr);
         link->setTempo(bpm);
     }
     
-    double UNITY_INTERFACE_EXPORT tempo(void* ptr)
+    UNITY_INTERFACE_EXPORT double UNITY_INTERFACE_API tempo(void* ptr)
     {
         MyAbletonLink* link = static_cast<MyAbletonLink*>(ptr);
         return link->tempo();
     }
     
-    void UNITY_INTERFACE_EXPORT setQuantum(void* ptr, double quantum)
+    UNITY_INTERFACE_EXPORT void UNITY_INTERFACE_API setQuantum(void* ptr, double quantum)
     {
         MyAbletonLink* link = static_cast<MyAbletonLink*>(ptr);
         link->setQuantum(quantum);
     }
 
-    double UNITY_INTERFACE_EXPORT quantum(void* ptr)
+    UNITY_INTERFACE_EXPORT double UNITY_INTERFACE_API quantum(void* ptr)
     {
         MyAbletonLink* link = static_cast<MyAbletonLink*>(ptr);
         return link->quantum();
     }
     
-    bool UNITY_INTERFACE_EXPORT isEnabled(void* ptr)
+     UNITY_INTERFACE_EXPORT bool UNITY_INTERFACE_API isEnabled(void* ptr)
     {
         MyAbletonLink* link = static_cast<MyAbletonLink*>(ptr);
         return link->isEnabled();
     }
 
-    void UNITY_INTERFACE_EXPORT enable(void* ptr, bool bEnable)
+    UNITY_INTERFACE_EXPORT void UNITY_INTERFACE_API enable(void* ptr, bool bEnable)
     {
         MyAbletonLink* link = static_cast<MyAbletonLink*>(ptr);
         link->enable(bEnable);
     }
     
-    int UNITY_INTERFACE_EXPORT numPeers(void* ptr)
+    UNITY_INTERFACE_EXPORT int UNITY_INTERFACE_API numPeers(void* ptr)
     {
         MyAbletonLink* link = static_cast<MyAbletonLink*>(ptr);
         return static_cast<int>(link->numPeers());
     }
 
-    void UNITY_INTERFACE_EXPORT update(void* ptr, double* rbeat, double* rphase)
+    UNITY_INTERFACE_EXPORT void UNITY_INTERFACE_API update(void* ptr, double* rbeat, double* rphase)
     {
         MyAbletonLink* link = static_cast<MyAbletonLink*>(ptr);
         MyAbletonLink::Status s = link->update();
         *rbeat = s.beat;
         *rphase = s.phase;
     }
+
+	//UNITY_INTERFACE_EXPORT void UNITY_INTERFACE_API setNumPeersCallback(void* ptr, numPeersCallback func)
+	//{
+ //       MyAbletonLink* link = static_cast<MyAbletonLink*>(ptr);
+	//	link->setNumPeersCallback(func);
+	//}
+	//
+	//UNITY_INTERFACE_EXPORT void UNITY_INTERFACE_API setTempoCallback(void* ptr, tempoCallback func)
+	//{
+ //       MyAbletonLink* link = static_cast<MyAbletonLink*>(ptr);
+	//	link->setTempoCallback(func);
+
+	//}
 
 #ifdef __cplusplus
 }

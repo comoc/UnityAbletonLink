@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,7 +16,7 @@ public class LinkBar : MonoBehaviour {
 		double beat, phase;
 		AbletonLink.Instance.update (out beat, out phase);
 		double q = AbletonLink.Instance.quantum();
-		Debug.Log ("" + (phase / q));
+		//Debug.Log ("" + (phase / q));
 		float p = (float)(phase / q);
 		if (p < prev)
 			transform.Rotate (0, 0, 15.0f);

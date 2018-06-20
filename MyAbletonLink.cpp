@@ -19,7 +19,13 @@
 
 MyAbletonLink::MyAbletonLink()
     : link(nullptr),
-    quantum_(4.0){
+    quantum_(4.0),
+	isNumPeersChanged(false),
+	numPeers_(0),
+	isTempoChanged(false),
+	tempo_(0.0),
+	npc(nullptr),
+	tc(nullptr) {
 }
 
 MyAbletonLink::~MyAbletonLink(){
@@ -35,11 +41,14 @@ void MyAbletonLink::setup(double tempo){
         delete link;
     }
     link = new ableton::Link(tempo);
-    link->setNumPeersCallback([this](std::size_t /*peers*/){
-        // nop
+    link->setNumPeersCallback([this](std::size_t peers){
+		isNumPeersChanged = true;
+		numPeers_ = static_cast<int>(peers);
     });
-    link->setTempoCallback([this](const double /*bpm*/){
-        // nop
+
+    link->setTempoCallback([this](const double bpm){
+		isTempoChanged = true;
+		tempo_ = bpm;
     });
     link->enable(true);
 }
@@ -48,18 +57,19 @@ void MyAbletonLink::setTempo(double bpm){
     if (link == nullptr){
         return;
     }
-    auto timeline = link->captureAppTimeline();
     const auto time = link->clock().micros();
-    timeline.setTempo(bpm, time);
-    link->commitAppTimeline(timeline);
-    
+	auto state = link->captureAppSessionState();
+
+    state.setTempo(bpm, time);
+   
+	link->commitAppSessionState(state);
 }
 
 double MyAbletonLink::tempo(){
     if(link == nullptr){
         return 0.0;
     }
-    return link->captureAppTimeline().tempo();
+    return link->captureAppSessionState().tempo();
 }
 
 void MyAbletonLink::setQuantum(double quantum){
@@ -97,9 +107,26 @@ MyAbletonLink::Status MyAbletonLink::update(){
         return status;
     }
     const auto time = link->clock().micros();
-    auto timeline = link->captureAppTimeline();
-    status.beat  = timeline.beatAtTime(time, quantum_);
-    status.phase = timeline.phaseAtTime(time, quantum_);
+    auto state = link->captureAppSessionState();
+    status.beat  = state.beatAtTime(time, quantum_);
+    status.phase = state.phaseAtTime(time, quantum_);
+		
+	if (isNumPeersChanged && npc != nullptr) {
+		isNumPeersChanged = false;
+		npc(static_cast<int>(numPeers_));
+	}
+
+	if (isTempoChanged && tc != nullptr) {
+		isTempoChanged = false;
+		tc(static_cast<double>(tempo_));
+	}
     return status;
 }
 
+void MyAbletonLink::setNumPeersCallback(numPeersCallback cb) {
+	npc = cb;
+}
+
+void MyAbletonLink::setTempoCallback(tempoCallback cb) {
+	tc = cb;
+}
