@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.10
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UnityAbletonLink", "UnityAbletonLink.vcxproj", "{C67FCD1A-A1DA-47F7-B7C8-A559AFA4E468}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C67FCD1A-A1DA-47F7-B7C8-A559AFA4E468}.Debug|x64.ActiveCfg = Debug|x64
+		{C67FCD1A-A1DA-47F7-B7C8-A559AFA4E468}.Debug|x64.Build.0 = Debug|x64
+		{C67FCD1A-A1DA-47F7-B7C8-A559AFA4E468}.Debug|x86.ActiveCfg = Debug|Win32
+		{C67FCD1A-A1DA-47F7-B7C8-A559AFA4E468}.Debug|x86.Build.0 = Debug|Win32
+		{C67FCD1A-A1DA-47F7-B7C8-A559AFA4E468}.Release|x64.ActiveCfg = Release|x64
+		{C67FCD1A-A1DA-47F7-B7C8-A559AFA4E468}.Release|x64.Build.0 = Release|x64
+		{C67FCD1A-A1DA-47F7-B7C8-A559AFA4E468}.Release|x86.ActiveCfg = Release|Win32
+		{C67FCD1A-A1DA-47F7-B7C8-A559AFA4E468}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {803304A9-D524-45A5-9EAB-663B124EC6A3}
+	EndGlobalSection
+EndGlobal

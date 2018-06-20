@@ -153,4 +153,29 @@ public class AbletonLink: IDisposable
 	{
 		update(nativeInstance, out beat, out phase);
 	}
+
+
+//	public delegate void NumPeersCallbackDelegate(int peers);
+//#if UNITY_IPHONE
+//	[DllImport ("__Internal")]
+//#else
+//	[DllImport("UnityAbletonLink")]
+//#endif
+//	private static extern void setNumPeersCallback(IntPtr ptr, IntPtr func);
+//	public void setNumPeersCallback(IntPtr func)
+//	{
+//		setNumPeersCallback(nativeInstance, func);
+//	}
+
+//	public delegate void TempoCallbackDelegate(double bpm);
+//#if UNITY_IPHONE
+//	[DllImport ("__Internal")]
+//#else
+//	[DllImport("UnityAbletonLink")]
+//#endif
+//	private static extern void setTempoCallback(IntPtr ptr, IntPtr func);
+//	public void setTempoCallback(IntPtr func)
+//	{
+//		setTempoCallback(nativeInstance, func);
+//	}
 }
