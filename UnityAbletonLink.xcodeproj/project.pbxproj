@@ -9,15 +9,16 @@
 /* Begin PBXBuildFile section */
 		FD28C6A71E004F5A00734748 /* Plugin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD28C6A51E004F5A00734748 /* Plugin.cpp */; };
 		FD742A271E0E89FF00CDEBC9 /* MyAbletonLink.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD742A261E0E89FF00CDEBC9 /* MyAbletonLink.cpp */; };
+		FDB740FF20DBDE780099EA8B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FDB740FE20DBDE780099EA8B /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		FD28C69A1E004E9D00734748 /* UnityAbletonLink.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnityAbletonLink.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		FD28C69D1E004E9D00734748 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FD28C6A41E004F3900734748 /* Plugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Plugin.h; sourceTree = "<group>"; };
 		FD28C6A51E004F5A00734748 /* Plugin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Plugin.cpp; sourceTree = "<group>"; };
 		FD742A251E0E893900CDEBC9 /* MyAbletonLink.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyAbletonLink.h; sourceTree = "<group>"; };
 		FD742A261E0E89FF00CDEBC9 /* MyAbletonLink.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MyAbletonLink.cpp; sourceTree = "<group>"; };
+		FDB740FE20DBDE780099EA8B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,8 +35,8 @@
 		FD28C6911E004E9D00734748 = {
 			isa = PBXGroup;
 			children = (
+				FDB740FE20DBDE780099EA8B /* Info.plist */,
 				FD28C6A31E004EDA00734748 /* Source */,
-				FD28C69C1E004E9D00734748 /* UnityAbletonLink */,
 				FD28C69B1E004E9D00734748 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -46,14 +47,6 @@
 				FD28C69A1E004E9D00734748 /* UnityAbletonLink.bundle */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		FD28C69C1E004E9D00734748 /* UnityAbletonLink */ = {
-			isa = PBXGroup;
-			children = (
-				FD28C69D1E004E9D00734748 /* Info.plist */,
-			);
-			path = UnityAbletonLink;
 			sourceTree = "<group>";
 		};
 		FD28C6A31E004EDA00734748 /* Source */ = {
@@ -124,6 +117,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FDB740FF20DBDE780099EA8B /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,7 +239,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = UnityAbletonLink/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				PRODUCT_BUNDLE_IDENTIFIER = com.blogspot.comolog.UnityAbletonLink;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -258,7 +252,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = UnityAbletonLink/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				PRODUCT_BUNDLE_IDENTIFIER = com.blogspot.comolog.UnityAbletonLink;
 				PRODUCT_NAME = "$(TARGET_NAME)";
