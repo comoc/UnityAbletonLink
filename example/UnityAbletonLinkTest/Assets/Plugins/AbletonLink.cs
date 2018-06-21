@@ -110,16 +110,27 @@ public class AbletonLink: IDisposable
 		return quantum(nativeInstance);
 	}
 
-	#if UNITY_IPHONE
-	[DllImport ("__Internal")]
-	#else
-	[DllImport ("UnityAbletonLink")]
-	#endif
-	private static extern bool isEnabled(IntPtr ptr);
-	public bool isEnabled()
-	{
-		return isEnabled(nativeInstance);
-	}
+    #if UNITY_IPHONE
+    [DllImport ("__Internal")]
+    #else
+    [DllImport("UnityAbletonLink")]
+    #endif
+    private static extern void forceBeatAtTime(IntPtr ptr, double beat);
+    public void forceBeatAtTime(double beat)
+    {
+        forceBeatAtTime(nativeInstance, beat);
+    }
+
+    #if UNITY_IPHONE
+    [DllImport ("__Internal")]
+    #else
+    [DllImport("UnityAbletonLink")]
+    #endif
+    private static extern void requestBeatAtTime(IntPtr ptr, double beat);
+    public void requestBeatAtTime(double beat)
+    {
+        requestBeatAtTime(nativeInstance, beat);
+    }
 
 	#if UNITY_IPHONE
 	[DllImport ("__Internal")]
@@ -131,6 +142,17 @@ public class AbletonLink: IDisposable
 	{
 		enable(nativeInstance, bEnable);
 	}
+
+    #if UNITY_IPHONE
+    [DllImport ("__Internal")]
+    #else
+    [DllImport("UnityAbletonLink")]
+    #endif
+    private static extern bool isEnabled(IntPtr ptr);
+    public bool isEnabled()
+    {
+        return isEnabled(nativeInstance);
+    }
 
 	#if UNITY_IPHONE
 	[DllImport ("__Internal")]
@@ -148,12 +170,11 @@ public class AbletonLink: IDisposable
 	#else
 	[DllImport ("UnityAbletonLink")]
 	#endif
-	private static extern void update(IntPtr ptr, out double beat, out double phase);
-	public void update(out double beat, out double phase)
+	private static extern void update(IntPtr ptr, out double beat, out double phase, out double tempo, out double time, out int numPeers);
+    public void update(out double beat, out double phase, out double tempo, out double time, out int numPeers)
 	{
-		update(nativeInstance, out beat, out phase);
+        update(nativeInstance, out beat, out phase, out tempo, out time, out numPeers);
 	}
-
 
 //	public delegate void NumPeersCallbackDelegate(int peers);
 //#if UNITY_IPHONE

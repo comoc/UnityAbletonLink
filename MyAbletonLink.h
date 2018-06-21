@@ -39,7 +39,6 @@
 #define LINKHUT_AUDIO_PLATFORM_ASIO 1
 #endif
 #include "ableton/Link.hpp"
-#include "AudioPlatform.hpp"
 
 #include <algorithm>
 #include <atomic>
@@ -55,14 +54,14 @@
 #define UNITY_INTERFACE_API
 #endif
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-	using numPeersCallback = void(UNITY_INTERFACE_API *)(int);
-	using tempoCallback = void(UNITY_INTERFACE_API *)(double);
-#ifdef __cplusplus
-}
-#endif
+//#ifdef __cplusplus
+//extern "C" {
+//#endif
+//    using numPeersCallback = void(UNITY_INTERFACE_API *)(int);
+//    using tempoCallback = void(UNITY_INTERFACE_API *)(double);
+//#ifdef __cplusplus
+//}
+//#endif
 
 class MyAbletonLink {
 public:
@@ -70,7 +69,11 @@ public:
     {
         double beat;
         double phase;
-        Status() : beat(0.0), phase(0.0){}
+        double tempo;
+        double quantam;
+        double time;
+        int numPeers;
+        Status() : beat(0.0), phase(0.0), tempo(0.0), quantam(0.0), time(0.0), numPeers(0) {}
     };
     MyAbletonLink();
     ~MyAbletonLink();
@@ -88,28 +91,30 @@ public:
     void setQuantum(double quantum);
     double quantum();
     
-    bool isEnabled() const;
-    void enable(bool bEnable);
+    void forceBeatAtTime(double beat);
+    void requestBeatAtTime(double beat);
     
+    void enable(bool bEnable);
+    bool isEnabled() const;
+
     std::size_t numPeers();
     
     Status update();
     
-	void setNumPeersCallback(numPeersCallback cb);
-	void setTempoCallback(tempoCallback cb);
+//    void setNumPeersCallback(numPeersCallback cb);
+//    void setTempoCallback(tempoCallback cb);
 private:
-    ableton::Link* link;
-	ableton::linkaudio::AudioPlatform* audioPlatform;
+    ableton::Link* link_;
     double quantum_;
 
-	bool isNumPeersChanged;
+	bool isNumPeersChanged_;
 	int numPeers_;
 
-	bool isTempoChanged;
+	bool isTempoChanged_;
 	double tempo_;
 
-	numPeersCallback npc;
-	tempoCallback tc;
+//    numPeersCallback npc;
+//    tempoCallback tc;
 };
 
 

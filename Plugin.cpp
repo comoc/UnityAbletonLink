@@ -58,17 +58,29 @@ extern "C" {
         MyAbletonLink* link = static_cast<MyAbletonLink*>(ptr);
         return link->quantum();
     }
-    
-     UNITY_INTERFACE_EXPORT bool UNITY_INTERFACE_API isEnabled(void* ptr)
+
+    UNITY_INTERFACE_EXPORT void UNITY_INTERFACE_API forceBeatAtTime(void* ptr, double beat)
     {
         MyAbletonLink* link = static_cast<MyAbletonLink*>(ptr);
-        return link->isEnabled();
+        link->forceBeatAtTime(beat);
     }
-
+    
+    UNITY_INTERFACE_EXPORT void UNITY_INTERFACE_API requestBeatAtTime(void* ptr, double beat)
+    {
+        MyAbletonLink* link = static_cast<MyAbletonLink*>(ptr);
+        link->requestBeatAtTime(beat);
+    }
+    
     UNITY_INTERFACE_EXPORT void UNITY_INTERFACE_API enable(void* ptr, bool bEnable)
     {
         MyAbletonLink* link = static_cast<MyAbletonLink*>(ptr);
         link->enable(bEnable);
+    }
+
+    UNITY_INTERFACE_EXPORT bool UNITY_INTERFACE_API isEnabled(void* ptr)
+    {
+        MyAbletonLink* link = static_cast<MyAbletonLink*>(ptr);
+        return link->isEnabled();
     }
     
     UNITY_INTERFACE_EXPORT int UNITY_INTERFACE_API numPeers(void* ptr)
@@ -77,12 +89,19 @@ extern "C" {
         return static_cast<int>(link->numPeers());
     }
 
-    UNITY_INTERFACE_EXPORT void UNITY_INTERFACE_API update(void* ptr, double* rbeat, double* rphase)
+    UNITY_INTERFACE_EXPORT void UNITY_INTERFACE_API update(void* ptr, double* rbeat, double* rphase, double* rtempo, double* rtime, int* rnumPeers)
     {
+//        double tempo;
+//        double quantam;
+//        double time;
+//        int numPeers;
         MyAbletonLink* link = static_cast<MyAbletonLink*>(ptr);
         MyAbletonLink::Status s = link->update();
         *rbeat = s.beat;
         *rphase = s.phase;
+        *rtempo = s.tempo;
+        *rtime = s.time;
+        *rnumPeers = s.numPeers;
     }
 
 	//UNITY_INTERFACE_EXPORT void UNITY_INTERFACE_API setNumPeersCallback(void* ptr, numPeersCallback func)

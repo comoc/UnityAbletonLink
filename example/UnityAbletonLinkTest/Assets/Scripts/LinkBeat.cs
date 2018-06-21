@@ -12,8 +12,9 @@ public class LinkBeat : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		double beat, phase;
-		AbletonLink.Instance.update (out beat, out phase);
+        double beat, phase, tempo, time;
+        int numPeers;
+        AbletonLink.Instance.update(out beat, out phase, out tempo, out time, out numPeers);
 //		Debug.Log ("beat: " + beat + " phase:" + phase);
 		float fphase = (float)phase;
 		fphase = fphase - Mathf.Floor (fphase);

@@ -16,11 +16,10 @@ public class LinkInfo : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		double tempo = AbletonLink.Instance.tempo ();
-		double quantum = AbletonLink.Instance.quantum ();
-		double beat, phase;
-		AbletonLink.Instance.update (out beat, out phase);
-		int numPeers = AbletonLink.Instance.numPeers();
+        double beat, phase, tempo, time;
+        int numPeers;
+        AbletonLink.Instance.update(out beat, out phase, out tempo, out time, out numPeers);
+        double quantum = AbletonLink.Instance.quantum();
 		GetComponent<Text> ().text = "Tempo:" + tempo + " Quantum:" + quantum + "\n"
 			+ "Beat:" + beat + " Phase:" + phase + "\n"
 			+ "NumPeers:" + numPeers;
