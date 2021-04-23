@@ -4,3 +4,5 @@
 [submodule "abl_link"]
 	path = abl_link
 	url = git@github.com:libpd/abl_link.git
+[submodule "submod-repo"]
+	ignore = dirty
