@@ -1,8 +1,8 @@
-[submodule "link"]
-	path = link
-	url = https://github.com/Ableton/link
 [submodule "abl_link"]
 	path = abl_link
 	url = git@github.com:libpd/abl_link.git
 [submodule "submod-repo"]
 	ignore = dirty
+[submodule "link"]
+	path = link
+	url = https://github.com/Ableton/link.git
