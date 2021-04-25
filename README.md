@@ -2,7 +2,7 @@
 
 UnityAbletonLink is an [Ableton Link](https://github.com/Ableton/link) plugin for [Unity](https://unity3d.com).
 
-## Building
+## Building plugins
 
 After checked out the UnityAbletonLink repository, then check out all dependencies.
 
@@ -11,25 +11,42 @@ cd UnityAbletonLink
 git submodule update --init --recursive
 ```
 
+### For Mac
 Open `UnityAbletonLink.xcodeproj` with Xcode, then build it.
 
-## Running
+### For Windows
+Open `UnityAbletonLink.sln` with Visual Studio (ver. >= 2017), then build it.
+
+### For Android
+* Windows:  Run the `build_android_plugin.bat`.
+* Mac or Linux: Run the `build_android_plugin.sh`.
+`.so` will be generated in the `libs` folder.
+
+## Setting the Unity project and the plugin.
 
 Create a new Unity project.
-Create a `Plugins` folder under the `Assets` folder of the project.
+Create the `Plugins` folder under the `Assets` folder in the project.
 
-### Mac
+#### For Mac
 
-Copy `UnityAbletonLink.bundle` and `CSharp/AbletonLink.cs` into the `Plugins` folder.
+Copy the `UnityAbletonLink.bundle` and the `CSharp/AbletonLink.cs` into the `Plugins` folder.
 
-### Windows
+### For Windows
 
-Copy `CSharp/AbletonLink.cs` into the `Plugins` folder.
+Copy the `CSharp/AbletonLink.cs` into the `Plugins` folder.
 Create the `x86_64` folder under the `Plugins` folder.
-Copy `UnityAbletonLink.dll` into the `Plugins/x86_64` folder.
+Copy the `UnityAbletonLink.dll` into the `Plugins/x86_64` folder.
 
-Where `AbletonLink.cs` is a wrapper script for `UnityAbletonLink` plugin.
+### For Android
+Copy the `CSharp/AbletonLink.cs` into the `Plugins` folder.
+Create the `Android` folder under the `Plugins` folder.
+Copy the `libs` folder into the `Plugins/Android` folder.
 
+### Common
+`AbletonLink.cs` is a wrapper script for `UnityAbletonLink` plugin.
+`AbletonLink` class is the singleton. So you can access it by using `AbletonLink.Instance()`.
+
+## Write some code in Unity
 Write some script to use it.
 For example,
 
@@ -60,6 +77,7 @@ public class Example : MonoBehaviour {
 
 Attach the script to a GameObject (e.g. Main Camera or something).
 
+## Play in Unity
 Play the scene and play the other Ableton Link supported application such as Ableton Live, then you can see log messages like the following.
 ```
 ...
