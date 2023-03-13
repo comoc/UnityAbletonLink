@@ -29,7 +29,6 @@ Open `UnityAbletonLink.sln` with Visual Studio (ver. >= 2017), then build it.
 
 Run the following on a terminal.
 ```
-cd UnityAbletonLink
 mkdir build
 cd build
 cmake ..
