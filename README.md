@@ -1,6 +1,6 @@
 # UnityAbletonLink
 
-UnityAbletonLink is an [Ableton Link](https://github.com/Ableton/link) plugin for [Unity](https://unity3d.com).
+UnityAbletonLink is an [Ableton Link](https://github.com/Ableton/link) plugin for [Unity](https://unity.com).
 
 ## Building plugins
 
@@ -12,42 +12,62 @@ git submodule update --init --recursive
 ```
 
 ### For Mac
+
 Open `UnityAbletonLink.xcodeproj` with Xcode, then build it.
 
 ### For Windows
+
 Open `UnityAbletonLink.sln` with Visual Studio (ver. >= 2017), then build it.
 
 ### For Android
+
 * Windows:  Run the `build_android_plugin.bat`.
 * Mac or Linux: Run the `build_android_plugin.sh`.
 `.so` will be generated in the `libs` folder.
 
-## Setting the Unity project and the plugin.
+### For Linux
+
+Run the following on a terminal.
+```
+cd UnityAbletonLink
+mkdir build
+cd build
+cmake ..
+make
+```
+Then `libUnityAbletonLink.so` is generated in `build` directory.
+
+## Unity project settings
 
 Create a new Unity project.
-Create the `Plugins` folder under the `Assets` folder in the project.
+Create `Plugins` folder under `Assets` folder in the project.
 
-#### For Mac
+### For Mac
 
-Copy the `UnityAbletonLink.bundle` and the `CSharp/AbletonLink.cs` into the `Plugins` folder.
+Copy `UnityAbletonLink.bundle` and `CSharp/AbletonLink.cs` into `Plugins` folder.
 
 ### For Windows
 
-Copy the `CSharp/AbletonLink.cs` into the `Plugins` folder.
-Create the `x86_64` folder under the `Plugins` folder.
-Copy the `UnityAbletonLink.dll` into the `Plugins/x86_64` folder.
+Copy `CSharp/AbletonLink.cs` into `Plugins` folder.
+Create `x86_64` folder under `Plugins` folder.
+Copy `UnityAbletonLink.dll` into `Plugins/x86_64` folder.
 
 ### For Android
-Copy the `CSharp/AbletonLink.cs` into the `Plugins` folder.
-Create the `Android` folder under the `Plugins` folder.
-Copy the `libs` folder into the `Plugins/Android` folder.
+
+Copy `CSharp/AbletonLink.cs` into `Plugins` folder.
+Create `Android` folder under `Plugins` folder.
+Copy `libs` folder into `Plugins/Android` folder.
+
+### For Linux
+Copy `UnityAbletonLink.so` and `CSharp/AbletonLink.cs` into `Plugins` folder.
 
 ### Common
 `AbletonLink.cs` is a wrapper script for `UnityAbletonLink` plugin.
 `AbletonLink` class is the singleton. So you can access it by using `AbletonLink.Instance()`.
 
 ## Write some code in Unity
-Write some script to use it.
+
+Write some script to use this plugin.
 For example,
 
 ```Example.cs
@@ -78,6 +98,7 @@ public class Example : MonoBehaviour {
 Attach the script to a GameObject (e.g. Main Camera or something).
 
 ## Play in Unity
+
 Play the scene and play the other Ableton Link supported application such as Ableton Live, then you can see log messages like the following.
 ```
 ...
