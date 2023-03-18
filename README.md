@@ -62,7 +62,7 @@ Copy `UnityAbletonLink.so` and `CSharp/AbletonLink.cs` into `Plugins` folder.
 
 ### Common
 `AbletonLink.cs` is a wrapper script for `UnityAbletonLink` plugin.
-`AbletonLink` class is the singleton. So you can access it by using `AbletonLink.Instance()`.
+`AbletonLink` class is the singleton. So you can access it by using `AbletonLink.Instance`.
 
 ## Write some code in Unity
 
@@ -74,22 +74,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Example : MonoBehaviour {
-
+public class Example : MonoBehaviour
+{
 	private AbletonLink link;
 
-	// Use this for initialization
-	void Start () {
-	}
-
-	// Update is called once per frame
-	void Update () {
-        	double beat, phase, tempo, time;
+	void Update ()
+	{
+		double beat, phase, tempo, time;
 		int numPeers;
-        	AbletonLink.Instance.update(out beat, out phase, out tempo, out time, out numPeers);
+		
+		// We can get the latest beat, phase and tempo as follows.
+        AbletonLink.Instance.update(out beat, out phase, out tempo, out time, out numPeers);
 
-		// We can obtain the latest beat and phase like this.
-		Debug.Log ("beat: " + beat + " phase:" + phase);
+		Debug.Log ("beat: " + beat + " phase:" + phase + " tempo:" + tempo);
 	}
 }
 ```
